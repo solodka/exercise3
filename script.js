@@ -76,9 +76,33 @@ function detectLevel(sumBudget){
         console.log('Ошибка!');  
     }
 }
+
+function chooseOptExpenses(){
+    for (let i = 0; i < 3; i++){
+        let costName = prompt("Статья необязательных расходов?", ""),
+            costSum = prompt("Во сколько обойдется?","");
+        if(
+            typeof(costName) == 'string' && 
+            typeof(costName) != null &&
+            typeof(costSum) != 0 && 
+            costName != '' && 
+            costSum != '' && 
+            costName.length < 50
+        )
+            {
+                appData.optionalExpenses[costName] = +costSum;
+                //expensesSum += +costSum; 
+            }
+        else {
+            i--;
+        }  
+    }            
+}
+
 chooseExpencive();
 let budgetForDay = detectDayBudget();
 detectLevel(budgetForDay);
+chooseOptExpenses();
 
 
 
