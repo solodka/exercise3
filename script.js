@@ -46,27 +46,6 @@ function chooseExpencive(){
         }  
     }            
 }
-chooseExpencive();
-
-function detectDayBudget(){
-    let budgetForDay = (money - expensesSum)/30;
-    alert("Ежедневный бюджет: " + budgetForDay.toFixed());
-    return budgetForDay;
-}
-
-let budgetForDay = detectDayBudget();
-
-
-if (budgetForDay <= 100){
-    console.log('Минимальный уровень достатка'); 
-} else if (budgetForDay > 100 && budgetForDay < 2000) {
-    console.log('Средний уровень достатка'); 
-} else if (budgetForDay >= 2000){
-    console.log('Высокий уровень достатка'); 
-}
-else {
-    console.log('Ошибка!');  
-}
 
 function checkSavings(){
     if (appData.savings == true) {
@@ -78,5 +57,32 @@ function checkSavings(){
             alert("Доход в месяц с вашего депозита " + appData.monthIncome);
     }
 }
+
+function detectDayBudget(){
+    let budgetForDay = (money - expensesSum)/30;
+    alert("Ежедневный бюджет: " + budgetForDay.toFixed());
+    return budgetForDay;
+}
+
+function detectLevel(sumBudget){
+    if (sumBudget <= 100){
+        console.log('Минимальный уровень достатка'); 
+    } else if (sumBudget > 100 && sumBudget < 2000) {
+        console.log('Средний уровень достатка'); 
+    } else if (sumBudget >= 2000){
+        console.log('Высокий уровень достатка'); 
+    }
+    else {
+        console.log('Ошибка!');  
+    }
+}
+chooseExpencive();
+let budgetForDay = detectDayBudget();
+detectLevel(budgetForDay);
+
+
+
+
+
 
 checkSavings();
